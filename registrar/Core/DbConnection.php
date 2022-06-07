@@ -8,7 +8,7 @@ class DbConnection
  public function connect()
  {
  try {
- $pdo = new PDO("mysql:host=" . $this->host . ";dbname:" . $this->db, $this->username, $this->password);
+ $pdo = new PDO("mysql:host=" . $this->host . ";dbname:" . $this->db, $this->username, $this->password, $this->email);
  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  return $pdo;
  } catch (PDOException $e) {

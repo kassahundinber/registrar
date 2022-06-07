@@ -5,6 +5,7 @@ class College
  private $id;
  private $name;
  private $phone;
+ private $email;
  //Setter & Getter
  public function setId($id)
  {
@@ -30,15 +31,23 @@ public function getName()
  {
  return $this->phone;
  }
+ public function setEmail($email)
+ $this->email=$email;
+}
+public function getEmail()
+ {
+ return $this->email;
+ }
  //Methods
  public function register($college)
  {
- $sql = "Insert into registrar7.college(name, phone) values(:name, :phone)";
+ $sql = "Insert into registrar7.college(name, phone) values(:name, :phone, :email)";
  $dbConn = new DbConnection();
  $conn = $dbConn->connect();
  $query = $conn->prepare($sql);
  $query->bindValue(':name', $college->getName());
  $query->bindValue(':phone', $college->getPhone());
+ $query->bindValue(':email', $college->getEmail());
  $query->execute();
  $is_success = $conn->lastInsertId();
  return $is_success;
